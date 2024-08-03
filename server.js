@@ -7,8 +7,11 @@ const app = express();
 const userRoutes = require("./routes/user");
 const productRoute = require("./routes/product");
 const orderRoutes = require("./routes/order");
+const morgan = require("morgan");
 const port = 8000;
 
+
+app.use(morgan('combined')); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -25,6 +28,8 @@ app.get("/", (req, res) => {
 app.use("/users", userRoutes);
 app.use("/products", productRoute);
 app.use("/orders", orderRoutes);
+
+
 
 app.listen(port,  () => {
   console.log(`Server is running on http://localhost:${port}`);

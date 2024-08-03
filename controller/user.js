@@ -58,7 +58,7 @@ exports.signup = async (req, res) => {
       password: hashedPassword,
       contactNumber: contactNumber,
       status: true,
-      role: "user",
+      role: "admin",
       userImage: userImage,
     });
 

@@ -4,7 +4,7 @@ const productController = require("../controller/product");
 
 
 const router = express.Router();
-
+router.post('/add-bulk-products', productController.addBulkProducts);
 router.get("/getAllProducts",productController.getAllProduct);
 router.get("/getProductById/:id",productController.getProductById);
 router.post("/createProduct",upload.single("productImage"),productController.createProduct);

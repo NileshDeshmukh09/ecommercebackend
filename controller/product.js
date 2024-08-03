@@ -1,7 +1,7 @@
 const Product = require("../model/product")
 const fs = require('fs');
 const path = require('path');
-
+const bulkProducts = require('../data/productJSON.js');
 
 exports.getAllProduct = async (req,res)=>{
     try {
@@ -35,6 +35,17 @@ exports.createProduct = async (req,res)=>{
         return res.status(500).send({message : "error", error : error});
     }
 }
+
+// router.post('/add-products', 
+    exports.addBulkProducts=     async (req, res) => {
+    try {
+        const result = await Product.insertMany(bulkProducts);
+        res.status(201).json(result);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 
 exports.updateProduct = async (req,res)=>{
     const id = req.params.id;
