@@ -4,7 +4,7 @@ const cors = require("cors");
 const path = require("path");
 require("dotenv").config();
 const app = express();
-// const userRoutes = require("./routes/user");;
+const userRoutes = require("./routes/user");;
 const port = 8000;
 
 app.use(express.json());
@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
     message: "Welcome to Ecommerce Server"});
 });
 
-// app.use("/users", userRoutes);
+app.use("/users", userRoutes);
 
 app.listen(port,  () => {
   console.log(`Server is running on http://localhost:${port}`);
