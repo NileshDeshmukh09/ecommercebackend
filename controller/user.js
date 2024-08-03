@@ -1,6 +1,7 @@
 const User = require("../model/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const nodemailer = require('nodemailer');
 
 exports.getAllUsers = async (req, res) => {
   try {
@@ -135,5 +136,43 @@ exports.updatePassword = async (req, res) => {
       .send({ message: "Data has been updated", data: existingUser });
   } catch (error) {
     return res.status(500).send({ message: "error", error: error });
+  }
+};
+
+// Nodemailer configuration
+exports.sendSuccessCheckoutEmail = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'nileshdeshmukh092000@gmail.com',
+        pass: 'zdavervphgjvmbdd',
+      },
+    });
+
+  
+
+    // Send OTP via email 
+    const mailOptions = {
+      from: 'test@ecommerce.com',
+      to: email,
+      subject: 'Checkout Successfull',
+      text: `Cart Has been been Checkout Successfully !!`,
+    };
+
+     transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+
+    res.status(200).json({ message: 'Checkout Successfull !' });
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 };
