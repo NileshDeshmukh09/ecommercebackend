@@ -8,6 +8,7 @@ const userRoutes = require("./routes/user");
 const productRoute = require("./routes/product");
 const orderRoutes = require("./routes/order");
 const morgan = require("morgan");
+const { specs, swaggerUi } = require("./swagger");
 const port = 8000;
 
 
@@ -24,7 +25,7 @@ app.get("/", (req, res) => {
     success : true,
     message: "Welcome to Ecommerce Server"});
 });
-
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 app.use("/users", userRoutes);
 app.use("/products", productRoute);
 app.use("/orders", orderRoutes);

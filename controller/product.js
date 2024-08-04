@@ -36,10 +36,10 @@ exports.createProduct = async (req,res)=>{
     }
 }
 
-// router.post('/add-products', 
-    exports.addBulkProducts=     async (req, res) => {
+exports.addBulkProducts=  async (req, res) => {
     try {
-        const result = await Product.insertMany(bulkProducts);
+        const bulkProductsData = req.body;
+        const result = await Product.insertMany(bulkProductsData);
         res.status(201).json(result);
     } catch (error) {
         res.status(500).json({ message: error.message });
