@@ -8,12 +8,12 @@
     https://ecommercebackend-mz55.onrender.com/
 
     ```
+ ## Swagger Screenshot
+![Screenshot (164)](https://github.com/NileshDeshmukh09/ecommercebackend/blob/master/screenshot/Screenshot%20(170).png)
+
 
 ### setup project in local
 
-    ```
-## Swagger Screenshot
-![Screenshot (164)]()
 
 
 1. **Clone the repository**
