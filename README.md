@@ -5,7 +5,7 @@
 
 - Swagger is set up to document the API endpoints. You can access the Swagger UI at:
     ```
-    https://ecommercebackend-mz55.onrender.com/
+    https://ecommercebackend-mz55.onrender.com/api-docs/#/
 
     ```
  ## Swagger Screenshot
